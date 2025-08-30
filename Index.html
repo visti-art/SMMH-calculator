@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMMH Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+        }
+        .brand {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff9500;
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: 100%;
+            height: 40px;
+            text-align: right;
+            margin-bottom: 10px;
+            font-size: 18px;
+            padding-right: 10px;
+        }
+        button {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+        .operator {
+            background-color: #ff9500;
+            color: white;
+        }
+        .operator:hover {
+            background-color: #e08e00;
+        }
+        .equal {
+            background-color: #34c759;
+            color: white;
+        }
+        .equal:hover {
+            background-color: #28a745;
+        }
+        .author {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="brand">SMMH</div>
+        <input type="text" id="display" disabled>
+        <div>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendValue('(')">(</button>
+            <button onclick="appendValue(')')">)</button>
+            <button class="operator" onclick="appendValue('/')">÷</button>
+        </div>
+        <div>
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button class="operator" onclick="appendValue('*')">×</button>
+        </div>
+        <div>
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button class="operator" onclick="appendValue('-')">-</button>
+        </div>
+        <div>
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button class="operator" onclick="appendValue('+')">+</button>
+        </div>
+        <div>
+            <button onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button class="equal" onclick="calculateResult()">=</button>
+        </div>
+        <div class="author">JAY P. SINGH</div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+
+        function appendValue(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = '';
+        }
+
+        function calculateResult() {
+            try {
+                display.value = eval(display.value);
+            } catch (e) {
+                alert('Invalid Expression');
+            }
+        }
+    </script>
+</body>
+</html>
